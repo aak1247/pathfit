@@ -4,7 +4,7 @@
 
 Cli tool to translate path to fit current environment.
 
-- Supports WSL、Linux、Windows、MacOS etc，Especially can use windows path in wsl.
+- Supports WSL、MinGW、Windows(CMD) etc，Especially can use windows path in wsl.
 
 ## Install
 
@@ -23,4 +23,16 @@ go install github.com/aak1247/pathfit@latest
 ```bash
 pathfit /d/Users/aak1247/Repos
 # will output: D:\\Users\aak1247\Repos in Windows
+
+pathfit /mnt/d/Users/aak1247/Repos
+# will output: D:\\Users\aak1247\Repos in Windows
+
+pathfit D:\\Users\aak1247\Repos
+# will output: /mnt/d/Users/aak1247/Repos in WSL
+
+pathfit D:\\Users\aak1247\Repos
+# will output: /D/Users/aak1247/Repos in MinGW
+
+# use with cd command
+cd `pathfit D:\\Users\aak1247\Repos`
 ```
